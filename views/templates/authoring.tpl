@@ -1,4 +1,4 @@
-<div class="data-container" >
+<div class="data-container" style="width: 100%">
 	<div class="ui-widget ui-state-default ui-widget-header ui-corner-top container-title" >
 		<?=__('LTI Link configuration')?>
 	</div>
