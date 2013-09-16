@@ -95,10 +95,8 @@ class ltiTestConsumer_models_classes_LtiTestModel
 		//clone the process:
 		$propInstanceContent = new core_kernel_classes_Property(TEST_TESTCONTENT_PROP);
 		try{
-			$process = $source->getUniquePropertyValue($propInstanceContent);
-			$processCloner = new wfAuthoring_models_classes_ProcessCloner();
-			$processClone = $processCloner->cloneProcess($process);
-			$destination->editPropertyValues($propInstanceContent, $processClone->getUri());
+			$content = $source->getUniquePropertyValue($propInstanceContent);
+			$destination->editPropertyValues($propInstanceContent, $content->duplicate());
 		} catch(Exception $e) {
 			throw new Exception("the test process cannot be found");
 		}
