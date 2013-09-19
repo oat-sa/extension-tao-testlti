@@ -103,15 +103,11 @@ class ltiTestConsumer_models_classes_LtiTestModel
     }
     
     /**
-     * Compiles a test and returns a runable service call
-     * This should include the compilation of the items as well
-     *
-     * @param core_kernel_classes_Resource $test
-     * @param core_kernel_file_File $destinationDirectory
-     * @return tao_models_classes_service_ServiceCall
+     * (non-PHPdoc)
+     * @see taoTests_models_classes_TestModel::getCompiler()
      */
-    public function compile( core_kernel_classes_Resource $test,core_kernel_file_File $destinationDirectory) {
-        return null;
+    public function getCompiler(core_kernel_classes_Resource $test) {
+        return new ltiTestConsumer_models_classes_LtiTestCompiler($test);
     }
     
     
