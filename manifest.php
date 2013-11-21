@@ -40,6 +40,13 @@ return array(
 			dirname(__FILE__). '/models/ontology/ltitest.rdf',
 		)
 	),
+
+    'managementRole' => 'http://www.tao.lu/Ontologies/TAOTest.rdf#TaoLtiManagerRole',
+    'acl' => array(
+        array('grant', 'http://www.tao.lu/Ontologies/TAOTest.rdf#TaoLtiManagerRole', array('ext'=>'ltiTestConsumer')),
+        array('grant', 'http://www.tao.lu/Ontologies/TAO.rdf#DeliveryRole', array('ext'=>'ltiTestConsumer', 'mod' => 'TestConsumerService')),
+        array('grant', 'http://www.tao.lu/Ontologies/TAOTest.rdf#TestsManagerRole', array('ext'=>'ltiTestConsumer', 'mod' => 'Authoring')),
+    ),
 	'constants' => array(
 		# actions directory
 		"DIR_ACTIONS"			=> $extpath."actions".DIRECTORY_SEPARATOR,
