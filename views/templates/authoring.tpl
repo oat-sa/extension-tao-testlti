@@ -10,23 +10,21 @@
 	</div>	
 </div>
 <script type="text/javascript">
-$(function(){
-	require(['require', 'jquery', 'generis.tree.select'], function(req, $) {
-		$('#saver-action-<?=get_data('formName')?>').click(function(){
-			toSend = $('#<?=get_data('formName')?>').serialize();
-    		$.ajax({
-    			url: "<?=get_data('saveUrl')?>",
-    			type: "POST",
-    			data: toSend,
-    			dataType: 'json',
-    			success: function(response) {
-    				if (response.saved) {
-    					helpers.createInfoMessage(__('Selection saved successfully'));
-    				}
-    			},
-    		});			
-		});
-	});
-		
+
+require(['jquery', 'i18n', 'helpers', 'generis.tree.select'], function($, __, helpers) {
+        $('#saver-action-<?=get_data('formName')?>').click(function(){
+            var toSend = $('#<?=get_data('formName')?>').serialize();
+            $.ajax({
+                    url: "<?=get_data('saveUrl')?>",
+                    type: "POST",
+                    data: toSend,
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.saved) {
+                            helpers.createInfoMessage(__('Selection saved successfully'));
+                        }
+                    }
+             });
+        });
 });
 </script>
