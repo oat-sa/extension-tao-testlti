@@ -27,9 +27,41 @@
  * @subpackage models_classes
  */
 class ltiTestConsumer_models_classes_LtiTestCompiler
-	extends tao_models_classes_Compiler
+	extends taoTests_models_classes_TestCompiler
 {
 
-    function compile(core_kernel_file_File $destinationDirectory) {
+    function compile() {
+        
+        $content = $this->getResource()->getUniquePropertyValue(new core_kernel_classes_Property(TEST_TESTCONTENT_PROP));
+        
+        $ltiLaunchUrl = $content->getOnePropertyValue(new core_kernel_classes_Property(PROPERTY_LTI_LINK_LAUNCHURL));
+        $ltiLinkConsumer = $content->getOnePropertyValue(new core_kernel_classes_Property(PROPERTY_LTI_LINK_CONSUMER));
+        
+        if (empty($ltiLaunchUrl)) {
+            throw new tao_models_classes_CompilationFailedException('Missing launch Url for test '.$this->getResource()->getUri());
+        }
+        if (empty($ltiLinkConsumer)) {
+            throw new tao_models_classes_CompilationFailedException('Missing LTI consumer for test '.$this->getResource()->getUri());
+        }
+        
+        // Build the service call.
+        $service = new tao_models_classes_service_ServiceCall(new core_kernel_classes_Resource(INSTANCE_LTI_CONSUMER_SERVICE));
+        $param = new tao_models_classes_service_ConstantParameter(
+            // Test Definition URI passed to the QtiTestRunner service.
+            new core_kernel_classes_Resource(INSTANCE_FORMALPARAM_LTI_LAUNCH_URL),
+            $ltiLaunchUrl
+        );
+        $service->addInParameter($param);
+        
+        $param = new tao_models_classes_service_ConstantParameter(
+            // Test Compilation URI passed to the QtiTestRunner service.
+            new core_kernel_classes_Resource(INSTANCE_FORMALPARAM_LTI_CONSUMER),
+            $ltiLinkConsumer->getUri()
+        );
+        $service->addInParameter($param);
+        
+        common_Logger::d("LTI Test successfully compiled.");
+        
+        return $service;
     }
 }

@@ -106,8 +106,8 @@ class ltiTestConsumer_models_classes_LtiTestModel
      * (non-PHPdoc)
      * @see taoTests_models_classes_TestModel::getCompiler()
      */
-    public function getCompiler(core_kernel_classes_Resource $test) {
-        return new ltiTestConsumer_models_classes_LtiTestCompiler($test);
+    public function getCompilerClass() {
+        return 'ltiTestConsumer_models_classes_LtiTestCompiler';
     }
     
     

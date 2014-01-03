@@ -44,7 +44,6 @@ return array(
     'managementRole' => 'http://www.tao.lu/Ontologies/TAOTest.rdf#TaoLtiManagerRole',
     'acl' => array(
         array('grant', 'http://www.tao.lu/Ontologies/TAOTest.rdf#TaoLtiManagerRole', array('ext'=>'ltiTestConsumer')),
-        array('grant', 'http://www.tao.lu/Ontologies/TAO.rdf#DeliveryRole', array('ext'=>'ltiTestConsumer', 'mod' => 'TestConsumerService')),
         array('grant', 'http://www.tao.lu/Ontologies/TAOTest.rdf#TestsManagerRole', array('ext'=>'ltiTestConsumer', 'mod' => 'Authoring')),
     ),
 	'constants' => array(

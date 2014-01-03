@@ -38,18 +38,6 @@ class ltiTestConsumer_actions_Authoring extends tao_actions_SaSModule {
 	}
 	
 	/**
-	 * constructor: initialize the service and the default data
-	 */
-	public function __construct()
-	{
-
-		parent::__construct();
-
-		//the service is initialized by default
-		$this->service = taoWfTest_models_classes_WfTestService::singleton();
-	}
-
-	/**
 	 * save the related items from the checkbox tree or from the sequence box
 	 * @return void
 	 */
@@ -60,11 +48,17 @@ class ltiTestConsumer_actions_Authoring extends tao_actions_SaSModule {
 	    $instance = $this->getCurrentInstance();
         $launchUrl = $this->getRequestParameter(tao_helpers_Uri::encode(PROPERTY_LTI_LINK_LAUNCHURL));	    
         $consumerUrl = $this->getRequestParameter(tao_helpers_Uri::encode(PROPERTY_LTI_LINK_CONSUMER));
+        if (empty($launchUrl)) {
+            return $this->returnError('Launch URL is required');
+        }
+        if (empty($consumerUrl)) {
+            return $this->returnError('Consumer is required');
+        }
         $consumer = new core_kernel_classes_Resource(tao_helpers_Uri::decode($consumerUrl));
         
         $saved = $instance->setPropertiesValues(array(
             PROPERTY_LTI_LINK_LAUNCHURL => $launchUrl,
-            PROPERTY_LTI_LINK_CONSUMER => $consumerUrl
+            PROPERTY_LTI_LINK_CONSUMER => $consumer
         ));
 	    
 	    echo json_encode(array(
