@@ -1,5 +1,5 @@
 <?php
-/*  
+/**  
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation; under version 2
@@ -17,12 +17,6 @@
  * Copyright (c) 2013 (original work) Open Assessment Techonologies SA (under the project TAO-PRODUCT);
  *               
  * 
- */
-?>
-<?php
-/*
- * @author CRP Henri Tudor - TAO Team - {@link http://www.tao.lu}
- * @license GPLv2  http://www.opensource.org/licenses/gpl-2.0.php
  */
 require_once dirname(__FILE__). '/../tao/includes/class.Bootstrap.php';
 
