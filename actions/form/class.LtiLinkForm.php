@@ -26,7 +26,7 @@
  * @access public
  * @author Bertrand Chevrier, <bertrand.chevrier@tudor.lu>
  * @package tao
- * @subpackage actions_form
+ 
  */
 class ltiTestConsumer_actions_form_LtiLinkForm
     extends tao_actions_form_Instance
