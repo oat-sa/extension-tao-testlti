@@ -27,8 +27,8 @@ $extpath = dirname(__FILE__).DIRECTORY_SEPARATOR;
 $taopath = dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'tao'.DIRECTORY_SEPARATOR;
 
 return array(
-    'id' => 'ltiTestConsumer',
-	'name' => 'LTI Test Consumer',
+    'name' => 'ltiTestConsumer',
+	'label' => 'LTI Test Consumer',
 	'description' => 'An experimental LTI test consumer which allows the embedding of external content as a test withing Tao. Does not support outcomes.',
     'license' => 'GPL-2.0',
     'version' => '0.8',
