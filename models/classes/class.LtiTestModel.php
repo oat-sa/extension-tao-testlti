@@ -40,7 +40,7 @@ class ltiTestConsumer_models_classes_LtiTestModel
 	}
 	
 	/**
-     * (non-PHPdoc)
+     * @deprecated
      * @see taoTests_models_classes_TestModel::getAuthoring()
      */
     public function getAuthoring( core_kernel_classes_Resource $test) {
@@ -60,6 +60,13 @@ class ltiTestConsumer_models_classes_LtiTestModel
     	return $widget->render();
     }
     
+    /**
+     * @see taoTests_models_classes_TestModel::getAuthoringUrl()
+     */
+    public function getAuthoringUrl( core_kernel_classes_Resource $test) {
+        return _url('index', 'Authoring', 'ltiTestConsumer', array('uri' => $test->getUri()));
+    }
+
     /**
      * (non-PHPdoc)
      * @see taoTests_models_classes_TestModel::onTestModelSet()
