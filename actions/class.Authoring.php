@@ -36,6 +36,22 @@ class ltiTestConsumer_actions_Authoring extends tao_actions_SaSModule {
 	protected function getClassService() {
 		return taoTests_models_classes_TestsService::singleton();
 	}
+
+    public function index()
+    {
+        $test = $this->getCurrentInstance();
+    	$testService = taoTests_models_classes_TestsService::singleton();
+
+    	$class = new core_kernel_classes_Class(CLASS_LTI_TESTCONTENT);
+    	$content = $test->getOnePropertyValue(new core_kernel_classes_Property(TEST_TESTCONTENT_PROP));
+    	
+        common_Logger::i('Generating form for '.$content->getUri());
+    	$form = new ltiTestConsumer_actions_form_LtiLinkForm($content);
+    	
+    	$this->setData('saveUrl', _url('save', 'Authoring', 'ltiTestConsumer'));
+    	$this->setData('formContent', $form->getForm()->render());
+        $this->setView('authoring.tpl');
+    }
 	
 	/**
 	 * save the related items from the checkbox tree or from the sequence box

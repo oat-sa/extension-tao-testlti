@@ -32,14 +32,17 @@ class ltiTestConsumer_actions_form_LtiLinkForm
     extends tao_actions_form_Instance
 {
     public function __construct($content) {
-        $class = new core_kernel_classes_Class(CLASS_LTI_TESTCONTENT);
-        parent::__construct($class, $content, array('excludedProperties' => array(RDFS_LABEL)));
+
+        //@FIXME had to use CLASS_LTI_OUTGOING_LINK instead of CLASS_LTI_TESTCONTENT as it was not working...
+        $class = new core_kernel_classes_Class(CLASS_LTI_OUTGOING_LINK);
+        parent::__construct($class, $content, array(
+            'excludedProperties' => array(RDFS_LABEL) 
+        ));
     }
     
     protected function initForm()
     {
         parent::initForm();
         $this->form->setActions(array(), 'top');
-        $this->form->setActions(array(), 'bottom');
     }
 }
