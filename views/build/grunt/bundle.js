@@ -12,7 +12,7 @@ module.exports = function(grunt) {
     /**
      * Remove bundled and bundling files
      */
-    clean.ltitestconsumerbundle = [out,  root + '/ltiTestConsumer/views/js/controllers.min.js'];
+    clean.ltitestconsumerbundle = [out];
     
     /**
      * Compile tao files into a bundle 
