@@ -26,7 +26,7 @@ module.exports = function(grunt) {
             modules : [{
                 name: 'ltiTestConsumer/controller/routes',
                 include : ext.getExtensionsControllers(['ltiTestConsumer']),
-                exclude : ['mathJax', 'mediaElement'].concat(libs)
+                exclude : ['mathJax'].concat(libs)
             }]
         }
     };
