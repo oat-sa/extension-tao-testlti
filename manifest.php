@@ -31,7 +31,7 @@ return array(
 	'label' => 'LTI Test Consumer',
 	'description' => 'An experimental LTI test consumer which allows the embedding of external content as a test withing Tao. Does not support outcomes.',
     'license' => 'GPL-2.0',
-    'version' => '0.8',
+    'version' => '1.0',
 	'author' => 'Open Assessment Technologies',
 	'requires' => array(
 	    'taoTests' => '*',
@@ -69,8 +69,5 @@ return array(
 	
 		#BASE URL (usually the domain root)
 		'BASE_URL'				=> ROOT_URL . 'ltiTestConsumer/',
-	
-		#BASE WWW the web resources path
-		'BASE_WWW'				=> ROOT_URL . 'ltiTestConsumer/views/',
 	)
 );
