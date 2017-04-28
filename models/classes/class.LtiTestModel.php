@@ -126,4 +126,16 @@ class ltiTestConsumer_models_classes_LtiTestModel
         // do nothing
     }
 
+	/**
+	 * Return the Packable implementation for the given test model.
+	 * Packing is an alternative to Compilation. A Packer generates the
+	 * data needed to run a test where the compiler creates a stand alone
+	 * test.
+	 * @return \oat\taoTests\model\pack\Packable the packer class to instantiate
+	 * @throws common_exception_NotImplemented
+	 */
+	public function getPackerClass()
+	{
+		throw new common_exception_NotImplemented("The packer isn't yet implemented for LTI tests");
+	}
 }
