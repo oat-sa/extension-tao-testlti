@@ -17,6 +17,7 @@
  * Copyright (c) 2013 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
  * 
  */
+use taoTests_models_classes_TestsService as TestService;
 
 /**
  * the LTI test consumer test-model
@@ -32,7 +33,7 @@ class ltiTestConsumer_models_classes_LtiTestCompiler
 
     function compile() {
         
-        $content = $this->getResource()->getUniquePropertyValue(new core_kernel_classes_Property(TEST_TESTCONTENT_PROP));
+        $content = $this->getResource()->getUniquePropertyValue(new core_kernel_classes_Property(TestService::TEST_TESTCONTENT_PROP));
         
         $ltiLaunchUrl = $content->getOnePropertyValue(new core_kernel_classes_Property(PROPERTY_LTI_LINK_LAUNCHURL));
         $ltiLinkConsumer = $content->getOnePropertyValue(new core_kernel_classes_Property(PROPERTY_LTI_LINK_CONSUMER));

@@ -17,6 +17,7 @@
  * Copyright (c) 2013 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
  * 
  */
+use taoTests_models_classes_TestsService as TestService;
 
 /**
  * Controller for actions related to the authoring of the simple test model
@@ -43,7 +44,7 @@ class ltiTestConsumer_actions_Authoring extends tao_actions_SaSModule {
     	$testService = taoTests_models_classes_TestsService::singleton();
 
     	$class = new core_kernel_classes_Class(CLASS_LTI_TESTCONTENT);
-    	$content = $test->getOnePropertyValue(new core_kernel_classes_Property(TEST_TESTCONTENT_PROP));
+    	$content = $test->getOnePropertyValue(new core_kernel_classes_Property(TestService::TEST_TESTCONTENT_PROP));
     	
         common_Logger::i('Generating form for '.$content->getUri());
     	$form = new ltiTestConsumer_actions_form_LtiLinkForm($content);
