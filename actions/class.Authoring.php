@@ -17,6 +17,8 @@
  * Copyright (c) 2013 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
  * 
  */
+
+use oat\taoLti\models\classes\LtiLink;
 use taoTests_models_classes_TestsService as TestService;
 
 /**
@@ -63,8 +65,8 @@ class ltiTestConsumer_actions_Authoring extends tao_actions_SaSModule {
 	    $saved = false;
 	    
 	    $instance = $this->getCurrentInstance();
-        $launchUrl = $this->getRequestParameter(tao_helpers_Uri::encode(PROPERTY_LTI_LINK_LAUNCHURL));	    
-        $consumerUrl = $this->getRequestParameter(tao_helpers_Uri::encode(PROPERTY_LTI_LINK_CONSUMER));
+        $launchUrl = $this->getRequestParameter(tao_helpers_Uri::encode(LtiLink::PROPERTY_LAUNCH_URL));
+        $consumerUrl = $this->getRequestParameter(tao_helpers_Uri::encode(LtiLink::PROPERTY_CONSUMER));
         if (empty($launchUrl)) {
             return $this->returnError('Launch URL is required');
         }
@@ -74,8 +76,8 @@ class ltiTestConsumer_actions_Authoring extends tao_actions_SaSModule {
         $consumer = new core_kernel_classes_Resource(tao_helpers_Uri::decode($consumerUrl));
         
         $saved = $instance->setPropertiesValues(array(
-            PROPERTY_LTI_LINK_LAUNCHURL => $launchUrl,
-            PROPERTY_LTI_LINK_CONSUMER => $consumer
+            LtiLink::PROPERTY_LAUNCH_URL => $launchUrl,
+            LtiLink::PROPERTY_CONSUMER => $consumer
         ));
 	    
 	    echo json_encode(array(
