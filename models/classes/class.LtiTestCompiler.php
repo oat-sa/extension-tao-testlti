@@ -35,7 +35,7 @@ class ltiTestConsumer_models_classes_LtiTestCompiler
 
     function compile() {
         
-        $content = $this->getResource()->getUniquePropertyValue(new core_kernel_classes_Property(TestService::TEST_TESTCONTENT_PROP));
+        $content = $this->getResource()->getUniquePropertyValue(new core_kernel_classes_Property(TestService::PROPERTY_TEST_CONTENT));
         
         $ltiLaunchUrl = $content->getOnePropertyValue(new core_kernel_classes_Property(LtiLink::PROPERTY_LAUNCH_URL));
         $ltiLinkConsumer = $content->getOnePropertyValue(new core_kernel_classes_Property(LtiLink::PROPERTY_CONSUMER));
@@ -48,17 +48,17 @@ class ltiTestConsumer_models_classes_LtiTestCompiler
         }
         
         // Build the service call.
-        $service = new tao_models_classes_service_ServiceCall(new core_kernel_classes_Resource(taoLti_models_classes_ConsumerService::INSTANCE_CONSUMER_SERVICE));
+        $service = new tao_models_classes_service_ServiceCall(new core_kernel_classes_Resource(taoLti_models_classes_ConsumerService::PROPERTY_INSTANCE_CONSUMER_SERVICE));
         $param = new tao_models_classes_service_ConstantParameter(
             // Test Definition URI passed to the QtiTestRunner service.
-            new core_kernel_classes_Resource(taoLti_models_classes_ConsumerService::INSTANCE_FORMAL_PARAM_LAUNCH_URL),
+            new core_kernel_classes_Resource(taoLti_models_classes_ConsumerService::PROPERTY_INSTANCE_FORMAL_PARAM_LAUNCH_URL),
             $ltiLaunchUrl
         );
         $service->addInParameter($param);
         
         $param = new tao_models_classes_service_ConstantParameter(
             // Test Compilation URI passed to the QtiTestRunner service.
-            new core_kernel_classes_Resource(taoLti_models_classes_ConsumerService::INSTANCE_FORMAL_PARAM_CONSUMER),
+            new core_kernel_classes_Resource(taoLti_models_classes_ConsumerService::PROPERTY_INSTANCE_FORMAL_PARAM_CONSUMER),
             $ltiLinkConsumer->getUri()
         );
         $service->addInParameter($param);

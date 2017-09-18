@@ -46,7 +46,7 @@ class ltiTestConsumer_actions_Authoring extends tao_actions_SaSModule {
     	$testService = taoTests_models_classes_TestsService::singleton();
 
     	$class = new core_kernel_classes_Class(CLASS_LTI_TESTCONTENT);
-    	$content = $test->getOnePropertyValue(new core_kernel_classes_Property(TestService::TEST_TESTCONTENT_PROP));
+    	$content = $test->getOnePropertyValue(new core_kernel_classes_Property(TestService::PROPERTY_TEST_CONTENT));
     	
         common_Logger::i('Generating form for '.$content->getUri());
     	$form = new ltiTestConsumer_actions_form_LtiLinkForm($content);
