@@ -33,6 +33,12 @@ class ltiTestConsumer_models_classes_LtiTestCompiler
 	extends taoTests_models_classes_TestCompiler
 {
 
+	const INSTANCE_CONSUMER_SERVICE = 'http://www.tao.lu/Ontologies/TAOLTI.rdf#ServiceLtiConsumer';
+
+	const INSTANCE_FORMAL_PARAM_CONSUMER = 'http://www.tao.lu/Ontologies/TAOLTI.rdf#LtiConsumerUri';
+
+	const INSTANCE_FORMAL_PARAM_LAUNCH_URL = 'http://www.tao.lu/Ontologies/TAOLTI.rdf#LtiLaunchUrl';
+
     function compile() {
         
         $content = $this->getResource()->getUniquePropertyValue(new core_kernel_classes_Property(TestService::PROPERTY_TEST_CONTENT));
@@ -48,17 +54,17 @@ class ltiTestConsumer_models_classes_LtiTestCompiler
         }
         
         // Build the service call.
-        $service = new tao_models_classes_service_ServiceCall(new core_kernel_classes_Resource(taoLti_models_classes_ConsumerService::PROPERTY_INSTANCE_CONSUMER_SERVICE));
+        $service = new tao_models_classes_service_ServiceCall(new core_kernel_classes_Resource(self::INSTANCE_CONSUMER_SERVICE));
         $param = new tao_models_classes_service_ConstantParameter(
             // Test Definition URI passed to the QtiTestRunner service.
-            new core_kernel_classes_Resource(taoLti_models_classes_ConsumerService::PROPERTY_INSTANCE_FORMAL_PARAM_LAUNCH_URL),
+            new core_kernel_classes_Resource(self::INSTANCE_FORMAL_PARAM_LAUNCH_URL),
             $ltiLaunchUrl
         );
         $service->addInParameter($param);
         
         $param = new tao_models_classes_service_ConstantParameter(
             // Test Compilation URI passed to the QtiTestRunner service.
-            new core_kernel_classes_Resource(taoLti_models_classes_ConsumerService::PROPERTY_INSTANCE_FORMAL_PARAM_CONSUMER),
+            new core_kernel_classes_Resource(self::INSTANCE_FORMAL_PARAM_CONSUMER),
             $ltiLinkConsumer->getUri()
         );
         $service->addInParameter($param);
