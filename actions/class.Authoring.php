@@ -18,6 +18,9 @@
  * 
  */
 
+use oat\taoLti\models\classes\LtiLink;
+use taoTests_models_classes_TestsService as TestService;
+
 /**
  * Controller for actions related to the authoring of the simple test model
  *
@@ -43,7 +46,7 @@ class ltiTestConsumer_actions_Authoring extends tao_actions_SaSModule {
     	$testService = taoTests_models_classes_TestsService::singleton();
 
     	$class = new core_kernel_classes_Class(CLASS_LTI_TESTCONTENT);
-    	$content = $test->getOnePropertyValue(new core_kernel_classes_Property(TEST_TESTCONTENT_PROP));
+    	$content = $test->getOnePropertyValue(new core_kernel_classes_Property(TestService::PROPERTY_TEST_CONTENT));
     	
         common_Logger::i('Generating form for '.$content->getUri());
     	$form = new ltiTestConsumer_actions_form_LtiLinkForm($content);
@@ -62,8 +65,8 @@ class ltiTestConsumer_actions_Authoring extends tao_actions_SaSModule {
 	    $saved = false;
 	    
 	    $instance = $this->getCurrentInstance();
-        $launchUrl = $this->getRequestParameter(tao_helpers_Uri::encode(PROPERTY_LTI_LINK_LAUNCHURL));	    
-        $consumerUrl = $this->getRequestParameter(tao_helpers_Uri::encode(PROPERTY_LTI_LINK_CONSUMER));
+        $launchUrl = $this->getRequestParameter(tao_helpers_Uri::encode(LtiLink::PROPERTY_LAUNCH_URL));
+        $consumerUrl = $this->getRequestParameter(tao_helpers_Uri::encode(LtiLink::PROPERTY_CONSUMER));
         if (empty($launchUrl)) {
             return $this->returnError('Launch URL is required');
         }
@@ -73,8 +76,8 @@ class ltiTestConsumer_actions_Authoring extends tao_actions_SaSModule {
         $consumer = new core_kernel_classes_Resource(tao_helpers_Uri::decode($consumerUrl));
         
         $saved = $instance->setPropertiesValues(array(
-            PROPERTY_LTI_LINK_LAUNCHURL => $launchUrl,
-            PROPERTY_LTI_LINK_CONSUMER => $consumer
+            LtiLink::PROPERTY_LAUNCH_URL => $launchUrl,
+            LtiLink::PROPERTY_CONSUMER => $consumer
         ));
 	    
 	    echo json_encode(array(
