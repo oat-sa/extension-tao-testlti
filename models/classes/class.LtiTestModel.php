@@ -17,7 +17,7 @@
  * Copyright (c) 2013 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
  * 
  */
-
+use taoTests_models_classes_TestsService as TestService;
 /**
  * the LTI test consumer test-model
  *
@@ -47,7 +47,7 @@ class ltiTestConsumer_models_classes_LtiTestModel
     	$testService = taoTests_models_classes_TestsService::singleton();
 
     	$class = new core_kernel_classes_Class(CLASS_LTI_TESTCONTENT);
-    	$content = $test->getOnePropertyValue(new core_kernel_classes_Property(TEST_TESTCONTENT_PROP));
+    	$content = $test->getOnePropertyValue(new core_kernel_classes_Property(TestService::PROPERTY_TEST_CONTENT));
     	
     	common_Logger::i('Generating form for '.$content->getUri());
     	$form = new ltiTestConsumer_actions_form_LtiLinkForm($content);
@@ -74,7 +74,7 @@ class ltiTestConsumer_models_classes_LtiTestModel
     public function prepareContent( core_kernel_classes_Resource $test, $items = array()) {
         $class = new core_kernel_classes_Class(CLASS_LTI_TESTCONTENT);
         $content = $class->createInstance();
-        $test->setPropertyValue(new core_kernel_classes_Property(TEST_TESTCONTENT_PROP), $content);
+        $test->setPropertyValue(new core_kernel_classes_Property(TestService::PROPERTY_TEST_CONTENT), $content);
     }
     
     /**
@@ -82,10 +82,10 @@ class ltiTestConsumer_models_classes_LtiTestModel
      * @see taoTests_models_classes_TestModel::onTestModelSet()
      */
     public function deleteContent( core_kernel_classes_Resource $test) {
-    	$content = $test->getOnePropertyValue(new core_kernel_classes_Property(TEST_TESTCONTENT_PROP));
+    	$content = $test->getOnePropertyValue(new core_kernel_classes_Property(TestService::PROPERTY_TEST_CONTENT));
     	if (!is_null($content)) {
     		$content->delete();
-    		$test->removePropertyValue(new core_kernel_classes_Property(TEST_TESTCONTENT_PROP), $content);
+    		$test->removePropertyValue(new core_kernel_classes_Property(TestService::PROPERTY_TEST_CONTENT), $content);
     	}
     }
     
@@ -100,7 +100,7 @@ class ltiTestConsumer_models_classes_LtiTestModel
     public function cloneContent( core_kernel_classes_Resource $source, core_kernel_classes_Resource $destination) {
 
 		//clone the process:
-		$propInstanceContent = new core_kernel_classes_Property(TEST_TESTCONTENT_PROP);
+		$propInstanceContent = new core_kernel_classes_Property(TestService::PROPERTY_TEST_CONTENT);
 		try{
 			$content = $source->getUniquePropertyValue($propInstanceContent);
 			$destination->editPropertyValues($propInstanceContent, $content->duplicate());
