@@ -18,7 +18,7 @@
  * 
  */
 
-use oat\taoLti\models\classes\LtiLink;
+use oat\taoLti\models\classes\ResourceLink\OntologyLink;
 use taoTests_models_classes_TestsService as TestService;
 
 /**
@@ -43,8 +43,8 @@ class ltiTestConsumer_models_classes_LtiTestCompiler
         
         $content = $this->getResource()->getUniquePropertyValue(new core_kernel_classes_Property(TestService::PROPERTY_TEST_CONTENT));
         
-        $ltiLaunchUrl = $content->getOnePropertyValue(new core_kernel_classes_Property(LtiLink::PROPERTY_LAUNCH_URL));
-        $ltiLinkConsumer = $content->getOnePropertyValue(new core_kernel_classes_Property(LtiLink::PROPERTY_CONSUMER));
+        $ltiLaunchUrl = $content->getOnePropertyValue(new core_kernel_classes_Property(OntologyLink::PROPERTY_LAUNCH_URL));
+        $ltiLinkConsumer = $content->getOnePropertyValue(new core_kernel_classes_Property(OntologyLink::PROPERTY_CONSUMER));
         
         if (empty($ltiLaunchUrl)) {
             throw new tao_models_classes_CompilationFailedException('Missing launch Url for test '.$this->getResource()->getUri());

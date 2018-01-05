@@ -18,7 +18,7 @@
  * 
  */
 
-use oat\taoLti\models\classes\LtiLink;
+use oat\taoLti\models\classes\ResourceLink\OntologyLink;
 use taoTests_models_classes_TestsService as TestService;
 
 /**
@@ -65,8 +65,8 @@ class ltiTestConsumer_actions_Authoring extends tao_actions_SaSModule {
 	    $saved = false;
 	    
 	    $instance = $this->getCurrentInstance();
-        $launchUrl = $this->getRequestParameter(tao_helpers_Uri::encode(LtiLink::PROPERTY_LAUNCH_URL));
-        $consumerUrl = $this->getRequestParameter(tao_helpers_Uri::encode(LtiLink::PROPERTY_CONSUMER));
+        $launchUrl = $this->getRequestParameter(tao_helpers_Uri::encode(OntologyLink::PROPERTY_LAUNCH_URL));
+        $consumerUrl = $this->getRequestParameter(tao_helpers_Uri::encode(OntologyLink::PROPERTY_CONSUMER));
         if (empty($launchUrl)) {
             return $this->returnError('Launch URL is required');
         }
@@ -76,8 +76,8 @@ class ltiTestConsumer_actions_Authoring extends tao_actions_SaSModule {
         $consumer = new core_kernel_classes_Resource(tao_helpers_Uri::decode($consumerUrl));
         
         $saved = $instance->setPropertiesValues(array(
-            LtiLink::PROPERTY_LAUNCH_URL => $launchUrl,
-            LtiLink::PROPERTY_CONSUMER => $consumer
+            OntologyLink::PROPERTY_LAUNCH_URL => $launchUrl,
+            OntologyLink::PROPERTY_CONSUMER => $consumer
         ));
 	    
 	    echo json_encode(array(
