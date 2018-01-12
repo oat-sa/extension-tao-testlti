@@ -19,6 +19,8 @@
  * 
  */
 
+use oat\generis\model\OntologyRdfs;
+
 /**
  * Create a form from a  resource of your ontology. 
  * Each property will be a field, regarding it's widget.
@@ -36,7 +38,7 @@ class ltiTestConsumer_actions_form_LtiLinkForm
         //@FIXME had to use CLASS_LTI_OUTGOING_LINK instead of CLASS_LTI_TESTCONTENT as it was not working...
         $class = new core_kernel_classes_Class(CLASS_LTI_OUTGOING_LINK);
         parent::__construct($class, $content, array(
-            'excludedProperties' => array(RDFS_LABEL) 
+            'excludedProperties' => array(OntologyRdfs::RDFS_LABEL)
         ));
     }
     

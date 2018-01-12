@@ -31,11 +31,11 @@ return array(
 	'label' => 'LTI Test Consumer',
 	'description' => 'An experimental LTI test consumer which allows the embedding of external content as a test withing Tao. Does not support outcomes.',
     'license' => 'GPL-2.0',
-    'version' => '1.0.0',
+    'version' => '1.1.0',
 	'author' => 'Open Assessment Technologies',
 	'requires' => array(
-	    'taoTests' => '*',
-        'taoLti' => '*'
+	    'taoTests' => '>=6.5.1',
+            'taoLti' => '*'
 	),
 	'models' => array(
 	 	'http://www.tao.lu/Ontologies/TAOTest.rdf'
