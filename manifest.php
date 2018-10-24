@@ -1,22 +1,22 @@
 <?php
-/**  
+/**
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation; under version 2
  * of the License (non-upgradable).
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
- * 
+ *
  * Copyright (c) 2013 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
- *               
- * 
+ *
+ *
  */
 
 /**
@@ -31,11 +31,11 @@ return array(
 	'label' => 'LTI Test Consumer',
 	'description' => 'An experimental LTI test consumer which allows the embedding of external content as a test withing Tao. Does not support outcomes.',
     'license' => 'GPL-2.0',
-    'version' => '1.1.2',
+    'version' => '2.0.0',
 	'author' => 'Open Assessment Technologies',
 	'requires' => array(
-	    'taoTests' => '>=6.5.1',
-            'taoLti' => '*'
+	    'taoTests' => '>=8.0.0',
+        'taoLti' => '*'
 	),
 	'models' => array(
 	 	'http://www.tao.lu/Ontologies/TAOTest.rdf'
@@ -54,19 +54,19 @@ return array(
 	'constants' => array(
 		# actions directory
 		"DIR_ACTIONS"			=> $extpath."actions".DIRECTORY_SEPARATOR,
-	
+
 		# views directory
 		"DIR_VIEWS"				=> $extpath."views".DIRECTORY_SEPARATOR,
-	
+
 		# default module name
 		'DEFAULT_MODULE_NAME'	=> 'Browser',
-	
+
 		#default action name
 		'DEFAULT_ACTION_NAME'	=> 'index',
-	
+
 		#BASE PATH: the root path in the file system (usually the document root)
 		'BASE_PATH'				=> $extpath ,
-	
+
 		#BASE URL (usually the domain root)
 		'BASE_URL'				=> ROOT_URL . 'ltiTestConsumer/',
 	)
