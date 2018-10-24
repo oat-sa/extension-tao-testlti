@@ -28,13 +28,13 @@ class Updater extends \common_ext_ExtensionUpdater {
      * @return string string
      */
     public function update($initialVersion) {
-        
+
         $currentVersion = $initialVersion;
         $ext = \common_ext_ExtensionsManager::singleton()->getExtensionById('ltiTestConsumer');
 
         $this->setVersion($currentVersion);
 
-        $this->skip('0.8', '1.1.2');
+        $this->skip('0.8', '2.0.0');
     }
 
 }
