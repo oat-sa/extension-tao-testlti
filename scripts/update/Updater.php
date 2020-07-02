@@ -21,6 +21,12 @@
 
 namespace oat\ltiTestConsumer\scripts\update;
 
+/**
+ * Class Updater
+ *
+ * @package oat\ltiTestConsumer\scripts\update
+ * @deprecated use migrations instead. See https://github.com/oat-sa/generis/wiki/Tao-Update-Process
+ */
 class Updater extends \common_ext_ExtensionUpdater {
 
     /**
@@ -35,6 +41,11 @@ class Updater extends \common_ext_ExtensionUpdater {
         $this->setVersion($currentVersion);
 
         $this->skip('0.8', '2.0.0');
+
+        //Updater files are deprecated. Please use migrations.
+        //See: https://github.com/oat-sa/generis/wiki/Tao-Update-Process
+
+        $this->setVersion($this->getExtension()->getManifest()->getVersion());
     }
 
 }
